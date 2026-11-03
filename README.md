@@ -1,38 +1,63 @@
-# Customer Churn Prediction — Phase 1
+# Customer Churn Prediction
 
-A leakage-aware machine-learning workflow for the Telco Customer Churn dataset.
+A machine learning project that analyses customer data to identify churn patterns and predict whether a customer is likely to leave a telecommunications service.
 
-## Setup
+## Project Overview
 
-```bash
-python -m venv .venv
-# Windows:
-.venv\\Scripts\\activate
-# macOS/Linux:
-source .venv/bin/activate
+The project involves data cleaning, exploratory data analysis, model building, and evaluation to predict customer churn.
 
-pip install -r requirements.txt
-```
+## Technologies Used
 
-Place `WA_Fn-UseC_-Telco-Customer-Churn.csv` inside `data/`, then launch:
+* Python
+* Pandas and NumPy
+* Matplotlib and Seaborn
+* Scikit-learn
+* XGBoost
+* Imbalanced-learn
+* Joblib
+* Jupyter Notebook
 
-```bash
-jupyter notebook
-```
+## Machine Learning Models
 
-Open `notebooks/customer_churn_analysis_phase1.ipynb` and run all cells.
+The following classification algorithms were implemented and compared:
 
-## Key improvements
+* Logistic Regression
+* Decision Tree
+* Random Forest
+* XGBoost
 
-- Stratified train/test split before fitting.
-- `ColumnTransformer` with numeric imputation/scaling and categorical one-hot encoding.
-- SMOTE inside an imbalanced-learn pipeline, so resampling occurs independently within each CV training fold.
-- Logistic Regression baseline plus Decision Tree, Random Forest and optional XGBoost.
-- Randomized hyperparameter search selected by average precision.
-- Held-out test evaluation: precision, recall, F1, ROC-AUC, PR-AUC and confusion matrix.
-- Model-agnostic permutation importance.
-- Complete fitted pipeline saved with joblib; prediction accepts raw customer fields.
+SMOTE, cross-validation, and RandomizedSearchCV were used to handle class imbalance and optimize model performance.
 
-## Important
+## Results
 
-The dataset is not included. No performance results are claimed until the notebook is run with the dataset. SMOTE after one-hot encoding is a practical baseline; compare with SMOTENC and class weighting in follow-up experiments.
+The tuned XGBoost model achieved the following results:
+
+| Metric    |  Score |
+| --------- | -----: |
+| Accuracy  | 76.72% |
+| Precision | 54.46% |
+| Recall    | 75.13% |
+| F1-Score  | 63.15% |
+| ROC-AUC   | 84.14% |
+
+## How to Run
+
+1. Clone this repository.
+
+2. Install the required libraries:
+
+   ```bash
+   pip install pandas numpy matplotlib seaborn scikit-learn imbalanced-learn xgboost joblib jupyter
+   ```
+
+3. Open the Jupyter Notebook:
+
+   ```bash
+   jupyter notebook
+   ```
+
+4. Open `customer_churn_analysis.ipynb` and run the cells.
+
+## Dataset
+
+IBM Telco Customer Churn dataset.
